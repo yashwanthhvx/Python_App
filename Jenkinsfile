@@ -25,9 +25,8 @@ pipeline {
       
     stage('Build Docker image') {
       steps {
-        sh "pwd"
         dir('Python-App') {
-          sh 'sudo docker build -t node-app:latest .'
+          sh 'sudo docker build -t python-app:latest .'
         }
       }
     }
@@ -35,7 +34,7 @@ pipeline {
     stage('Run Docker container') {
       steps {
         dir('Python-App') {
-          sh 'sudo docker run -p 80:3000 -d node-app:latest'
+          sh 'sudo docker run -p 8000:5000 -d python-app:latest'
         }
       }
     }
@@ -44,8 +43,8 @@ pipeline {
       steps {
         dir('Python-App') {
           sh 'sudo bash docker-credentials.sh'
-          sh 'sudo docker tag node-app:latest hvxuser/jenkins'
-          sh 'sudo docker push hvxuser/jenkins'
+          sh 'sudo docker tag python-app:latest hvxuser/python-jenkins'
+          sh 'sudo docker push hvxuser/python-jenkins'
         }
       }
     }
