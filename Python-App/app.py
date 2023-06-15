@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Healthviewx, This is a sample test2!'
+    return 'Healthviewx, This is a python-app test from stage branch'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
